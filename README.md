@@ -1,7 +1,7 @@
 # DropWizard-ToDo
 
 # Setting up the Database. 
-Download mysql if you have it. 
+Download mysql if you don't have it. 
 * sudo systemctl start mysql
 * Follow the commands
   - mysql -u username -pusername( mysql -uroot -proot :: this was for me)
@@ -22,7 +22,7 @@ ON DELETE CASCADE
 ```
 * Enter dummy records ::
 ```
-INSERT INTO `todo`.`todo`(`task_name`,`description`) VALUES ('Chinmay','ALPHAQ');
+INSERT INTO `todo`.`todo`(`task_name`,`description`) VALUES ('Chinmay','Dummy Addition of Task');
 INSERT INTO `todo`.`todo`
 (`task_name`,`description`,`parent_id`) VALUES ('BE','writeCode',1);
 INSERT INTO `todo`.`todo`
