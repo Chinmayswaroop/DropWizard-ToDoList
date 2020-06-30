@@ -21,8 +21,8 @@ public interface ToDoRepository {
     @SqlQuery("select * from todo where parent_id = :parent_id")
     public List<Todo> getTodoActivity(@Bind("parent_id") final int parent_id);
 
-    @SqlUpdate("update todo set name = coalesce(:name, name), " +
-            " status = coalesce(:status, status)" +
+    @SqlUpdate("update todo set task_name = coalesce(:task_name, task_name), " +
+            " description = coalesce(:description, description)" +
             " where id = :id")
     void editTodo(@BindBean final Todo todo);
 

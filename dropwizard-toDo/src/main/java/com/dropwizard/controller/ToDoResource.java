@@ -101,22 +101,12 @@ public class ToDoResource {
                 activity.setParent_id(lastInsertId);
                 todoDSP.createTodo(activity);
                 activities.add(activity);
-
             }
         }
         result.setTodo(parent);
         result.setActivityList(activities);
         return Response.ok(result).build();
     }
-
-    @PUT
-    @Timed
-    @Path("{id}")
-    public Response updateTodo(@PathParam("id") final Integer id, @NotNull @Valid final Todo todo) {
-        todo.setId(id);
-        return Response.ok(todoDSP.editTodo(todo)).build();
-    }
-
 
     /**
      * Deletes the toDo along it's activities too.
@@ -131,6 +121,18 @@ public class ToDoResource {
     @Path("{id}")
     public Response deleteTodo(@PathParam("id") final Integer id) {
         return Response.ok(todoDSP.deleteTodo(id)).build();
+    }
+
+    // TODO After Frontend
+    @PUT
+    @Timed
+    @Path("{id}")
+    public Response updateTodo(@PathParam("id") final Integer id, @NotNull @Valid final Todo input) {
+        /* the input here maybe an activity or a todo(Parent) as both have same structure*/
+        Todo edited = todoDSP.editTodo(input);
+        int check = todoDSP.getTodo(id).getParent_id();
+        logger.debug("Check:: "+check);
+        return Response.ok(edited).build();
     }
 }
 
