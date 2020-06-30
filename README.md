@@ -77,7 +77,7 @@ You will be needing POSTMAN for using all the CRUD operations
 * Get list of all the Todos 
   GET http://localhost:8080/todos/
 
-* Get a particular the Todos 
+* Get a particular the with Todo
   GET http://localhost:8080/todos/{id}
 
 * To delete a Todo
@@ -110,14 +110,14 @@ You will be needing POSTMAN for using all the CRUD operations
 * To edit a particular Todo or and activity
   PUT http://localhost:8080/todos/{id}
   JSON Body
-  ```
-  {
-    "id": 25,
-    "task_name": "Workout",
-    "description": "X no of pushups Y no of pull ups"
+```
+{
+  "id": 25,
+  "task_name": "Workout",
+  "description": "X no of pushups Y no of pull ups"
 
 }
-  ```
+```
   
 # References
 * [To learn more about DropWizard](https://javadoc.io/doc/io.dropwizard/dropwizard-project)
