@@ -74,12 +74,51 @@ You will be needing POSTMAN for using all the CRUD operations
   ]
 }
 ```    
-* Get a particular the Todos :: http://localhost:8080/todos/{id}
+* Get list of all the Todos 
+  GET http://localhost:8080/todos/
 
-* To delete a ToDo. Select DELETE request in postman and give http://localhost:8080/todos/{id}. All the activities regarding that ToDo will also be deleted (On delete cascade)
+* Get a particular the Todos 
+  GET http://localhost:8080/todos/{id}
 
-* Edit Remaining
+* To delete a Todo
+  DELETE http://localhost:8080/todos/{id} All the activities regarding that Todo will also be deleted (On delete cascade)
 
+* To insert a new Todo with all the activities.
+  POST http://localhost:8080/todos/
+  JSON Body
+  ```
+  {
+        "todo": {
+            "task_name": "Funn on weekend",
+            "description": "Planning for weekedn"
+        },
+        "activityList": [
+            {
+                "task_name": "Watch a movie",
+                "description": "xyz xyz xyz"
+                
+            },
+            {
+                "task_name": "Meet Friends",
+                "description": "xyz xyz"
+
+            }
+        ]
+    }
+  ```
+
+* To edit a particular Todo or and activity
+  PUT http://localhost:8080/todos/{id}
+  JSON Body
+  ```
+  {
+    "id": 25,
+    "task_name": "Workout",
+    "description": "X no of pushups Y no of pull ups"
+
+}
+  ```
+  
 # References
 * [To learn more about DropWizard](https://javadoc.io/doc/io.dropwizard/dropwizard-project)
 
