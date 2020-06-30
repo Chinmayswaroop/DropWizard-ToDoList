@@ -48,12 +48,21 @@ java -jar target/dropwizard-toDo-1.0-SNAPSHOT.jar server config.yml
 ```
 Will start the server at localhost:8080
 
-# Seeing the Result
-You will be needing POSTMAN for using all the CRUD operations
+# Endpoints
+You will be needing POSTMAN for using all the CRUD operations.
 
-* Get all the Todos :: http://localhost:8080/todos/
+* Get list of all the Todos 
+  - GET http://localhost:8080/todos/
 
-* Select Post Request --> Body should be raw and type JSON ::http://localhost:8080/todos
+* Get a particular the with Todo
+  - GET http://localhost:8080/todos/{id}
+
+* To delete a Todo
+  - DELETE http://localhost:8080/todos/{id} All the activities regarding that Todo will also be deleted (On delete cascade)
+
+* To insert a new Todo with activities 
+  - POST http://localhost:8080/todos
+JSON Body
 ```
 {
   "todo": {
@@ -74,42 +83,9 @@ You will be needing POSTMAN for using all the CRUD operations
   ]
 }
 ```    
-* Get list of all the Todos 
-  GET http://localhost:8080/todos/
-
-* Get a particular the with Todo
-  GET http://localhost:8080/todos/{id}
-
-* To delete a Todo
-  DELETE http://localhost:8080/todos/{id} All the activities regarding that Todo will also be deleted (On delete cascade)
-
-* To insert a new Todo with all the activities.
-  POST http://localhost:8080/todos/
-  JSON Body
-  ```
-  {
-        "todo": {
-            "task_name": "Funn on weekend",
-            "description": "Planning for weekedn"
-        },
-        "activityList": [
-            {
-                "task_name": "Watch a movie",
-                "description": "xyz xyz xyz"
-                
-            },
-            {
-                "task_name": "Meet Friends",
-                "description": "xyz xyz"
-
-            }
-        ]
-    }
-  ```
-
 * To edit a particular Todo or and activity
-  PUT http://localhost:8080/todos/{id}
-  JSON Body
+  - PUT http://localhost:8080/todos/{id}
+JSON Body
 ```
 {
   "id": 25,
@@ -125,6 +101,3 @@ You will be needing POSTMAN for using all the CRUD operations
 # License
 
 [![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/DAVFoundation/captain-n3m0/blob/master/LICENSE)
-
-
-
