@@ -13,12 +13,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * DSP for the module dropwizardToDo
+ * Main Service for the module dropwizardToDo and will be used to call the DSP(DAO)
  *
  * @author  Chinmay Swaroop Saini
  */
 public abstract class ToDoService {
     private static final Logger logger = LoggerFactory.getLogger(ToDoService.class);
+
+    /*  Information
+        The @CreateSqlObject methods can be used to create DAO instances inside methods in the SqlObject
+        class, in order to have them participate in the same transaction
+
+        WebApplicationException extends Runtime exception.
+        Constructor used :: WebApplicationException(String message, int status)
+        Construct a new instance with a blank message and specified HTTP status code.
+    */
     @CreateSqlObject
     abstract ToDoRepository todoDao();
 
@@ -51,7 +60,6 @@ public abstract class ToDoService {
         return todoDao().getTodo(todoDao().lastInsertId());
     }
 
-    //TODO remaining
     public Todo editTodo(Todo todo) {
         if(Objects.isNull(todoDao().getTodo(todo.getId()))) {
             throw new WebApplicationException(String.format(Constants.TODO_NOT_FOUND, todo.getId()), Status.NOT_FOUND);

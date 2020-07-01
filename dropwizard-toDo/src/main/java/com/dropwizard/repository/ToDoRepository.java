@@ -8,10 +8,14 @@ import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 import java.util.List;
 
-//TODO :: create interface for this
 @RegisterMapper(ToDoMapper.class)
 public interface ToDoRepository {
-
+    /* Information :
+       Two Bindings are included with JDBI
+       1) @Bind will bind a single named argument
+       2) @BindBean :: If no name is give then binds directly to property names otherwise
+                       to the name and then access name.id, name.name
+     */
     @SqlQuery("select * from todo where parent_id is null")
     public List<Todo> getTodos();
 
