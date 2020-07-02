@@ -5,9 +5,9 @@ logging:
 database:
   driverClass: com.mysql.cj.jdbc.Driver
   url: jdbc:mysql://localhost:3306/todo?autoReconnect=true&useSSL=false
-  user: root
+  user: MSYQL_USERNAME_HERE
   # Look for storing encrypted password
-  password: root
+  password: MSYQL_PASSWORD_HERE
   maxWaitForConnection: 1s
   validationQuery: "/* ToDoService Health Check */ SELECT 1"
   validationQueryTimeout: 3s
