@@ -27,8 +27,8 @@ public interface ToDoRepository {
 
     @SqlUpdate("update todo set task_name = coalesce(:task_name, task_name), " +
             " description = coalesce(:description, description)" +
-            " where id = :id")
-    void editTodo(@BindBean final Todo todo);
+            " where id = :edit_id")
+    void editTodo(@BindBean final Todo todo, @Bind("edit_id") final int id);
 
     @SqlUpdate("delete from todo where id = :id")
     int deleteTodo(@Bind("id") final int id);

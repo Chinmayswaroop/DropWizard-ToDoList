@@ -60,12 +60,12 @@ public abstract class ToDoService {
         return todoDao().getTodo(todoDao().lastInsertId());
     }
 
-    public Todo editTodo(Todo todo) {
-        if(Objects.isNull(todoDao().getTodo(todo.getId()))) {
+    public Todo editTodo(Todo todo, int id) {
+        if(Objects.isNull(todoDao().getTodo(id) )) {
             throw new WebApplicationException(String.format(Constants.TODO_NOT_FOUND, todo.getId()), Status.NOT_FOUND);
         }
-        todoDao().editTodo(todo);
-        return todoDao().getTodo(todo.getId());
+        todoDao().editTodo(todo,id);
+        return todoDao().getTodo(id);
     }
 
     public String deleteTodo(final Integer id) {

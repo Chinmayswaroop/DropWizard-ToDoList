@@ -123,13 +123,12 @@ public class ToDoResource {
         return Response.ok(todoDSP.deleteTodo(id)).build();
     }
 
-    // TODO After Frontend
     @PUT
     @Timed
     @Path("{id}")
     public Response updateTodo(@PathParam("id") final Integer id, @NotNull @Valid final Todo input) {
         /* the input here maybe an activity or a todo(Parent) as both have same structure*/
-        Todo edited = todoDSP.editTodo(input);
+        Todo edited = todoDSP.editTodo(input,id);
         int check = todoDSP.getTodo(id).getParent_id();
         logger.debug("Check:: "+check);
         return Response.ok(edited).build();
