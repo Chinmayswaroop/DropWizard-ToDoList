@@ -88,10 +88,8 @@ JSON Body
 JSON Body
 ```
 {
-  "id": 25,
   "task_name": "Workout",
   "description": "X no of pushups Y no of pull ups"
-
 }
 ```
   
